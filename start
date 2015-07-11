@@ -1,0 +1,10 @@
+#!/bin/bash
+SCRIPTPATH=$( cd $(dirname $0) ; pwd -P)
+
+# app environment configuration
+APPNAME="twanies super app"
+WORKDIR="www"
+PORT="80"
+echo "starting" $APPNAME
+docker run -v $SCRIPTPATH/$WORKDIR:/var/www:rw -p 80:$PORT -d webapp /sbin/my_init --enable-insecure-key
+echo $APPNAME "available on http://localhost"
